@@ -67,7 +67,28 @@ Implemente um footer no resultado final do desafio do [módulo 3](https://github
 
 Implemente uma função que receba como parâmetro um número e, após x milissegundos (dentre um intervalo de 1 a 100 ms. Utilize o `setTimeout` e as funções `floor` e `random` da biblioteca [Math](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math)), mostre no console o dobro do parâmetro recebido. Em seguida, chame essa função 5 vezes. Ex.:
 
-Sem realizar nenhum tratamento, é fácil perceber que a ordem dos valores mostrados no console é aleatória e não respeita a ordem de chamada das funções. Portanto, para resolver esse problema, trate o assincronismo do `setTimeout` utilizando [callback](https://developer.mozilla.org/pt-BR/docs/Glossario/Callback_function), [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) e [async/await](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/await).
+```js
+function printDouble(number){
+  setTimeout(
+    () => {
+      console.log(number * 2)
+    }, 
+    Math.floor(Math.random() * 100) + 1
+  )
+}
+
+function printAll(){
+  printDouble(5)
+  printDouble(10)
+  printDouble(22)
+  printDouble(1)
+  printDouble(89)
+}
+
+printAll()
+```
+
+Sem realizar nenhum tratamento, é fácil perceber que a ordem dos valores mostrados no console ao chamar a função `printAll()` é aleatória e não respeita a ordem de chamada das funções. Portanto, para resolver esse problema, trate o assincronismo do `setTimeout` utilizando [callback](https://developer.mozilla.org/pt-BR/docs/Glossario/Callback_function), [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) e [async/await](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/await).
 
 (Dica: no tratamento com Promise, faça o retorno de uma nova Promise e utilize o parâmetro `resolve`).
 
